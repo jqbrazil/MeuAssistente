@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111827">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+<title>Meu Assistente</title>
+</head>
+<body>
+<header>
+  <div><h1>Meu Assistente</h1><p>Agenda • Diário • Ideias</p></div>
+  <button id="installBtn" hidden>Instalar</button>
+</header>
+
+<main>
+<nav>
+  <button class="tab active" data-tab="home">🏠 Início</button>
+  <button class="tab" data-tab="agenda">📅 Agenda</button>
+  <button class="tab" data-tab="diary">📖 Diário</button>
+  <button class="tab" data-tab="ai">🤖 Assistente</button>
+</nav>
+
+<section id="home" class="page active">
+  <div class="hero"><h2>Olá! 👋</h2><p>Vamos organizar seu dia?</p></div>
+  <div class="grid">
+    <article><h3>Próximos compromissos</h3><div id="nextEvents"></div></article>
+    <article><h3>Mensagem de hoje</h3><p id="dailyMsg"></p></article>
+  </div>
+</section>
+
+<section id="agenda" class="page">
+  <h2>Agenda</h2>
+  <form id="eventForm" class="card">
+    <input id="eventTitle" placeholder="Ex.: Inglês" required>
+    <label>Começa <input id="eventDate" type="datetime-local" required></label>
+    <label>Termina <input id="eventEnd" type="datetime-local" required></label>
+    <label>Repetir
+      <select id="repeat">
+        <option value="none">Não repetir</option>
+        <option value="daily">Todos os dias</option>
+        <option value="weekdays">Segunda a sexta</option>
+        <option value="weekly">Toda semana no mesmo dia</option>
+        <option value="custom">Escolher dias da semana</option>
+      </select>
+    </label>
+    <div id="daysBox" hidden>
+      <span>Repetir em:</span>
+      <label><input type="checkbox" value="1"> SEG</label>
+      <label><input type="checkbox" value="2"> TER</label>
+      <label><input type="checkbox" value="3"> QUA</label>
+      <label><input type="checkbox" value="4"> QUI</label>
+      <label><input type="checkbox" value="5"> SEX</label>
+      <label><input type="checkbox" value="6"> SÁB</label>
+      <label><input type="checkbox" value="0"> DOM</label>
+    </div>
+    <button>Adicionar compromisso</button>
+  </form>
+  <div id="events" class="list"></div>
+</section>
+
+<section id="diary" class="page">
+  <h2>Diário</h2>
+  <form id="diaryForm" class="card">
+    <input id="diaryDate" type="date" required>
+    <textarea id="diaryText" rows="7" placeholder="Como foi seu dia? O que você está pensando?"></textarea>
+    <button>Salvar no diário</button>
+  </form>
+  <div id="entries" class="list"></div>
+</section>
+
+<section id="ai" class="page">
+  <h2>🤖 Meu Assistente</h2>
+  <p class="muted">Esta primeira versão funciona localmente e usa seus compromissos e diário para gerar sugestões simples.</p>
+  <div id="chat" class="chat"></div>
+  <form id="chatForm" class="chatForm">
+    <input id="chatInput" placeholder="Ex.: Estou cheio de tarefas..." required>
+    <button>Enviar</button>
+  </form>
+</section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
