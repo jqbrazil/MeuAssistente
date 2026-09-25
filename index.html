@@ -10,8 +10,8 @@
 </head>
 <body>
 <header>
-  <div><h1>Meu Assistente</h1><p>Agenda • Diário • Ideias</p></div>
-  <button id="installBtn" hidden>Instalar</button>
+  <div><h1>Meu Assistente</h1><p>Agenda • Diário • Ideias • Joguinho</p></div>
+  <button id="themeBtn" class="iconBtn" title="Alternar modo noturno">🌙</button>
 </header>
 
 <main>
@@ -20,10 +20,18 @@
   <button class="tab" data-tab="agenda">📅 Agenda</button>
   <button class="tab" data-tab="diary">📖 Diário</button>
   <button class="tab" data-tab="ai">🤖 Assistente</button>
+  <button class="tab" data-tab="game">🎮 Joguinho</button>
 </nav>
 
 <section id="home" class="page active">
-  <div class="hero"><h2>Olá! 👋</h2><p>Vamos organizar seu dia?</p></div>
+  <div class="hero">
+    <h2>Olá! 👋</h2>
+    <p>Vamos organizar seu dia?</p>
+    <div class="notifyBox">
+      <div><b>🔔 Avisos no celular</b><br><small id="notifyStatus">Ative para receber lembretes enquanto o app estiver aberto.</small></div>
+      <button id="notifyBtn">Ativar avisos</button>
+    </div>
+  </div>
   <div class="grid">
     <article><h3>Próximos compromissos</h3><div id="nextEvents"></div></article>
     <article><h3>Mensagem de hoje</h3><p id="dailyMsg"></p></article>
@@ -72,14 +80,30 @@
 
 <section id="ai" class="page">
   <h2>🤖 Meu Assistente</h2>
-  <p class="muted">Esta primeira versão funciona localmente e usa seus compromissos e diário para gerar sugestões simples.</p>
+  <p class="muted">Esta versão usa seus compromissos e diário salvos neste aparelho para dar sugestões simples.</p>
   <div id="chat" class="chat"></div>
   <form id="chatForm" class="chatForm">
     <input id="chatInput" placeholder="Ex.: Estou cheio de tarefas..." required>
     <button>Enviar</button>
   </form>
 </section>
+
+<section id="game" class="page">
+  <h2>🎮 Joguinho — Caça aos Alvos</h2>
+  <p class="muted">Clique ou toque nos alvos. Você tem 30 segundos!</p>
+  <div class="gameHud">
+    <b>⭐ <span id="gameScore">0</span></b>
+    <b>⏱️ <span id="gameTime">30</span>s</b>
+    <button id="gameStart">Começar</button>
+  </div>
+  <div id="gameBoard" class="gameBoard">
+    <div id="gameMessage">Pronto? 🎯</div>
+    <button id="target" class="target" hidden>🎯</button>
+  </div>
+  <p id="gameBest" class="muted"></p>
+</section>
 </main>
+
 <script src="app.js"></script>
 </body>
 </html>
