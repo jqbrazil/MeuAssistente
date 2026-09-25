@@ -90,7 +90,7 @@ function botReply(t){
 }
 $('#chatForm').onsubmit=e=>{e.preventDefault();let t=$('#chatInput').value;$('#chat').insertAdjacentHTML('beforeend',`<div class="msg user">${esc(t)}</div><div class="msg bot">${esc(botReply(t))}</div>`);$('#chatInput').value='';};
 
-# Notification support: permission + reminders while the PWA is running.
+// Notification support: permission + reminders while the PWA is running.
 async function notify(text){
   if(!('Notification' in window)||Notification.permission!=='granted')return;
   if('serviceWorker' in navigator){
@@ -119,7 +119,7 @@ setInterval(()=>{
   }
 },30000);
 
-# Mini game
+// Mini game
 let game={running:false,score:0,time:30,timer:null};
 const board=$('#gameBoard'),target=$('#target');
 function moveTarget(){
