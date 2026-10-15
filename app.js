@@ -91,7 +91,7 @@ function botReply(t){
 $('#chatForm').onsubmit=e=>{e.preventDefault();let t=$('#chatInput').value;$('#chat').insertAdjacentHTML('beforeend',`<div class="msg user">${esc(t)}</div><div class="msg bot">${esc(botReply(t))}</div>`);$('#chatInput').value='';};
 
 // Notification support: permission + reminders while the PWA is running.
-async function notify(text){
+setInterval(()=>{
   if(!('Notification' in window)||Notification.permission!=='granted')return;
   if('serviceWorker' in navigator){
     const reg=await navigator.serviceWorker.ready;
@@ -108,7 +108,6 @@ $('#notifyBtn').onclick=async()=>{
   if(p==='granted'){state.notifications=true;save();setupNotifications();await notify('Tudo certo! Vou te lembrar dos próximos compromissos enquanto o app estiver aberto.');}
   else alert('A permissão de notificações não foi concedida.');
 };
-let reminded=new Set();
 setInterval(()=>{
   if(!state.notifications||Notification.permission!=='granted')return;
   const now=Date.now();
